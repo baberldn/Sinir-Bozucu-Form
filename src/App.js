@@ -59,13 +59,13 @@ export default function App() {
     if (formData.rating !== '10') {
       setTimeout(() => {
         setFormData({ ...formData, rating: '10' })
-      }, 2000)
+      }, )
     }
 
     if (!formData.marketingResponse) {
       setTimeout(() => {
         setFormData({ ...formData, rating: '10', marketingResponse: true })
-      }, 2000)
+      }, )
     }
   })
 
@@ -109,10 +109,14 @@ export default function App() {
     lastName: '',
     email: '',
     privacyResponse: 'yes',
-    rating: '10',
+    rating: '8',
     marketingResponse: true,
     wantsToSubmit: false,
   })
+
+  
+
+
 
   return (
     <form onSubmit={fakeSubmit}>
@@ -123,6 +127,7 @@ export default function App() {
         placeholder='Adı'
         onChange={handleChange}
         name='firstName'
+        value={formData.firstName}
       />
 
       <input
@@ -130,6 +135,7 @@ export default function App() {
         placeholder='Soyadı'
         onChange={handleChange}
         name='lastName'
+        value={formData.lastName}
       />
 
       <input
@@ -137,6 +143,7 @@ export default function App() {
         placeholder='Email'
         onChange={handleChange}
         name='email'
+        value={formData.email}
       />
 
       <fieldset>
@@ -151,6 +158,7 @@ export default function App() {
               name='privacyResponse'
               value='yes'
               onChange={handleChange}
+              checked={formData.privacyResponse === 'yes'}
             />
             Evet
           </label>
@@ -161,8 +169,8 @@ export default function App() {
               id='no'
               name='privacyResponse'
               value='no'
-              defaultChecked
               onChange={handleChange}
+              checked={formData.privacyResponse === 'no'}
             />
             Hayır
           </label>
@@ -174,6 +182,7 @@ export default function App() {
               name='privacyResponse'
               value='absolutely'
               onChange={handleChange}
+              checked={formData.privacyResponse === 'absolutely'}
             />
             Kesinlikle
           </label>
@@ -186,7 +195,7 @@ export default function App() {
           değerlendirirsiniz?
         </legend>
 
-        <select onChange={handleChange} name='rating' defaultValue='10'>
+        <select onChange={handleChange} name='rating' value={formData.rating}>
           <option value='1'>1</option>
           <option value='2'>2</option>
           <option value='3'>3</option>
@@ -205,6 +214,7 @@ export default function App() {
           type='checkbox'
           name='marketingResponse'
           onChange={handleChange}
+          checked={formData.marketingResponse}
         />
 
         <div className='checkmark'></div>
